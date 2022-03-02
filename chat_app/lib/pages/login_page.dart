@@ -9,32 +9,35 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF2F2F2),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.9,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Logo(titulo: 'Messenger'),
-                _Form(),
-                Labels(
-                  ruta: 'register',
-                  titulo: '¿No tienes cuenta?',
-                  subTitulo: 'Crea una ahora!',
-                ),
-                Text(
-                  'Términos y condiciones de uso',
-                  style: TextStyle(fontWeight: FontWeight.w200),
-                )
-              ],
+        backgroundColor: Color(0xffF2F2F2),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Logo(
+                    key: UniqueKey(),
+                    titulo: 'Messenger',
+                  ),
+                  _Form(),
+                  Labels(
+                    key: UniqueKey(),
+                    ruta: 'register',
+                    titulo: '¿No tienes cuenta?',
+                    subTitulo: 'Crea una ahora!',
+                  ),
+                  Text(
+                    'Términos y condiciones de uso',
+                    style: TextStyle(fontWeight: FontWeight.w200),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 
@@ -55,18 +58,21 @@ class __FormState extends State<_Form> {
       child: Column(
         children: <Widget>[
           CustomInput(
+            key: UniqueKey(),
             icon: Icons.mail_outline,
             placeholder: 'Correo',
             keyboardType: TextInputType.emailAddress,
             textController: emailCtrl,
           ),
           CustomInput(
+            key: UniqueKey(),
             icon: Icons.lock_outline,
             placeholder: 'Contraseña',
             textController: passCtrl,
             isPassword: true,
           ),
           BotonAzul(
+            key: UniqueKey(),
             text: 'Ingrese',
             onPressed: () {
               print(emailCtrl.text);
