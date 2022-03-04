@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class Logo extends StatelessWidget {
   final String titulo;
 
-  const Logo({required Key key, required this.titulo}) : super(key: key);
+  const Logo({
+    Key? key,
+    required this.titulo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

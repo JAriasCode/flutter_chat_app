@@ -19,12 +19,10 @@ class RegisterPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Logo(
-                    key: UniqueKey(),
                     titulo: 'Registro',
                   ),
                   _Form(),
                   Labels(
-                    key: UniqueKey(),
                     ruta: 'login',
                     titulo: '¿Ya tienes una cuenta?',
                     subTitulo: 'Ingresa ahora!',
@@ -59,28 +57,24 @@ class __FormState extends State<_Form> {
       child: Column(
         children: <Widget>[
           CustomInput(
-            key: UniqueKey(),
             icon: Icons.perm_identity,
             placeholder: 'Nombre',
             keyboardType: TextInputType.text,
             textController: nameCtrl,
           ),
           CustomInput(
-            key: UniqueKey(),
             icon: Icons.mail_outline,
             placeholder: 'Correo',
             keyboardType: TextInputType.emailAddress,
             textController: emailCtrl,
           ),
           CustomInput(
-            key: UniqueKey(),
             icon: Icons.lock_outline,
             placeholder: 'Contraseña',
             textController: passCtrl,
             isPassword: true,
           ),
           BotonAzul(
-            key: UniqueKey(),
             text: 'Ingrese',
             onPressed: () {
               print(emailCtrl.text);
