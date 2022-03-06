@@ -10,7 +10,12 @@ import 'package:chat/models/login_response.dart';
 import 'package:chat/models/usuario.dart';
 
 class AuthService with ChangeNotifier {
-  Usuario? usuario;
+  Usuario usuario = new Usuario(
+    online: false,
+    email: 'email',
+    nombre: 'nombre',
+    uid: 'uid',
+  );
   bool _autenticando = false;
 
   final _storage = new FlutterSecureStorage();
@@ -21,7 +26,6 @@ class AuthService with ChangeNotifier {
     notifyListeners();
   }
 
-  // Getters del token de forma estática
   static Future<String?> getToken() async {
     final _storage = new FlutterSecureStorage();
     final token = await _storage.read(key: 'token');
@@ -65,7 +69,11 @@ class AuthService with ChangeNotifier {
   Future register(String nombre, String email, String password) async {
     this.autenticando = true;
 
-    final data = {'nombre': nombre, 'email': email, 'password': password};
+    final data = {
+      'nombre': nombre,
+      'email': email,
+      'password': password,
+    };
 
     final uri = Uri.parse('${Environment.apiUrl}/login/new');
     final resp = await http.post(
@@ -94,7 +102,10 @@ class AuthService with ChangeNotifier {
     final uri = Uri.parse('${Environment.apiUrl}/login/renew');
     final resp = await http.get(
       uri,
-      headers: {'Content-Type': 'application/json', 'x-token': token},
+      headers: {
+        'Content-Type': 'application/json',
+        'x-token': token,
+      },
     );
 
     if (resp.statusCode == 200) {
